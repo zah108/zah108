@@ -2,7 +2,7 @@
 
 2
 
-3-desktop
+3-desktop-remote
 
 4
 
