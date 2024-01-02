@@ -48,7 +48,7 @@ class PriceMACross(bt.Strategy):
             return  # то выходим, дальше не продолжаем
         
         if not self.position:  # Если позиции нет
-            isSignalBuy = self.close[0] > self.sma[0]  # Цена закрылась выше скользящцей
+            isSignalBuy = self.close[0] > self.sma[0]  # Цена закрылась выше скользящей
             if isSignalBuy:  # Если пришла заявка на покупку
                 self.log('Buy Market')
                 self.order = self.buy()  # Заявка на покупку по рыночной цене
@@ -74,16 +74,16 @@ if __name__ == '__main__':  # Точка входа при запуске это
     cerebro.adddata(data)  # Привязываем исторические данные
     cerebro.broker.setcash(1000000)  # Стартовый капитал для "бумажной" торговли
     cerebro.addsizer(bt.sizers.FixedSize, stake=10)  # Кол-во акций для покупки/продажи
-    cerebro.broker.setcommission(commission=0.001)  # Комиссия брокера 0.1% от суммы каждой исполненной заявки
-    cerebro.addanalyzer(bt.analyzers.TradeAnalyzer, _name='TradeAnalyzer')  # Привязываем анализатор закрытых сделок
+    # cerebro.broker.setcommission(commission=0.001)  # Комиссия брокера 0.1% от суммы каждой исполненной заявки
+    # cerebro.addanalyzer(bt.analyzers.TradeAnalyzer, _name='TradeAnalyzer')  # Привязываем анализатор закрытых сделок
     brokerStartValue = cerebro.broker.getvalue()  # Стартовый капитал
-    print(f'Старовый капитал: {brokerStartValue:.2f}')
+    print(f'Стартовый капитал: {brokerStartValue:.2f}')
     result = cerebro.run()  # Запуск торговой системы
-    brokerFinalValue = cerebro.broker.getvalue()  # Конечный капитал
-    print(f'Конечный капитал: {brokerFinalValue:.2f}')
-    print(f'Прибыль/убытки с комиссией: {(brokerFinalValue - brokerStartValue):.2f}')
-    analysis = result[0].analyzers.TradeAnalyzer.get_analysis()  # Получаем данные анализатора закрытых сделок
-    print('Прибыль/убытки по закрытым сделкам:')
-    print(f'- Без комиссии {analysis["pnl"]["gross"]["total"]:.2f}')
-    print(f'- С комиссией  {analysis["pnl"]["net"]["total"]:.2f}')
+    # brokerFinalValue = cerebro.broker.getvalue()  # Конечный капитал
+    # print(f'Конечный капитал: {brokerFinalValue:.2f}')
+    # print(f'Прибыль/убытки с комиссией: {(brokerFinalValue - brokerStartValue):.2f}')
+    # analysis = result[0].analyzers.TradeAnalyzer.get_analysis()  # Получаем данные анализатора закрытых сделок
+    # print('Прибыль/убытки по закрытым сделкам:')
+    # print(f'- Без комиссии {analysis["pnl"]["gross"]["total"]:.2f}')
+    # print(f'- С комиссией  {analysis["pnl"]["net"]["total"]:.2f}')
     cerebro.plot()  # Рисуем график
