@@ -5,9 +5,9 @@
 import pandas as pd
 import pandas_ta as ta
 
-df = pd.read_csv("Data/EURUSD_Candlestick_5_M_ASK_30.09.2019-30.09.2022.csv")
-df["Gmt time"]=df["Gmt time"].str.replace(".000","")
-df['Gmt time']=pd.to_datetime(df['Gmt time'],format='%d.%m.%Y %H:%M:%S')
+df = pd.read_csv("Data/SBER_D1.csv")
+# df["Gmt time"]=df["Gmt time"].str.replace(".000","")
+# df['Gmt time']=pd.to_datetime(df['Gmt time'],format='%d.%m.%Y %H:%M:%S')
 df=df[df.High!=df.Low]
 df.set_index("Gmt time", inplace=True)
 
@@ -82,6 +82,11 @@ fig = go.Figure(data=[go.Candlestick(x=dfpl.index,
                 go.Scatter(x=dfpl.index, y=dfpl['EMA'],
                            line=dict(color='black', width=1),
                            name="EMA")           ])
+
+fig.update_layout(
+    title='SBER',
+    xaxis_title='Date',
+)
 
 fig.show()
 

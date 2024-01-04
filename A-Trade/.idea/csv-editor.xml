@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Data/SBER_D1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../python3/Hackathon-Finam-NN-Trade-Robot/csv/SBER_H1.csv">
           <value>
             <Attribute>
