@@ -1,3 +1,11 @@
+'''
+Чтение данных из CSV файла и построение графика.
+Построение графика в библиотеке backtrader. 
+Отображается ценаб объем, точки входа в позицию и выхода. SMA.
+Открывается не в браузере, в отдельном окне. Проблема с отображением дат по оси Х.
+Исправлено на чтение файлов с МОЕХ.
+'''
+
 from datetime import datetime
 import backtrader as bt
 
@@ -64,9 +72,9 @@ if __name__ == '__main__':  # Точка входа при запуске это
     cerebro.addstrategy(PriceMACross, SMAPeriod=26)  # Привязываем торговую систему с параметрами
     data = bt.feeds.GenericCSVData(
         # Можно принимать любые CSV файлы с разделителем десятичных знаков в виде точки https://backtrader.com/docu/datafeed-develop-csv/
-        dataname='Data/TQBR.SBER_D1.txt',  # Файл для импорта
-        separator='\t',  # Колонки разделены табуляцией
-        dtformat='%d.%m.%Y %H:%M',  # Формат даты/времени DD.MM.YYYY HH:MI
+        dataname='Data/SBER_D1.csv',  # Файл для импорта
+        separator=',',  # Колонки разделены табуляцией
+        dtformat='%Y-%m-%d',  # Формат даты/времени DD.MM.YYYY HH:MI
         # dtformat='%d.%m.%Y',  # Формат даты/времени DD.MM.YYYY HH:MI
         openinterest=-1,  # Открытого интереса в файле нет
         fromdate=datetime(2019, 1, 1),  # Начальная дата приема исторических данных (Входит)
