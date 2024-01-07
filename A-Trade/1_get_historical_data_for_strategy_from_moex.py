@@ -51,6 +51,11 @@ async def get_all_historical_candles(portfolio, timeframes, start, end):
 if __name__ == "__main__":
 
     # применение настроек из config.py
+    """
+    Список тикеров в конфиге my_config/trade_config.py
+    Два таймфрейма
+    Загрузка с указанной даты по сейчас
+    """
     portfolio = Config.portfolio  # тикеры по которым скачиваем исторические данные
     timeframe_0 = Config.timeframe_0  # таймфрейм для обучения нейросети - вход
     timeframe_1 = Config.timeframe_1  # таймфрейм для обучения нейросети - выход
